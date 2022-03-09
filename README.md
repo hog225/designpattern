@@ -29,7 +29,10 @@
 3. 여렇 관련 객체들을 구체적인 클래스에 의존하지 않게 하기 위함 ?
 
 ## 빌더 패턴 
-Creationl pattern 중 하나, SOLID ? 
+
+- Creationl pattern 중 하나 
+- SRP 원칙을 보증해주고, 코드 재사용성을 높혀준다.
+
 1. 정의 목적 
    1. 다양한 객체 생성 문제에 대한 유현한 솔루션을 제공하기 위해 설계된 패턴 
    2. 객체의 생성과 표현 코드를 분리 (The intent of the Builder design pattern is to separate the construction of a complex object from its representation)
@@ -40,16 +43,26 @@ Creationl pattern 중 하나, SOLID ?
       - Builder 에서 product를 조립 하기 위한 메서드를 정의한다.  
       - ConcreteBuilderA에서 이를 구현한다. 
       - Director 는 Builder 를 주입받아서 Product를 생성한다.
-      - 클라이언트 코드에서는 
+      - 클라이언트 코드에서는 Director 혹은 Builder 를 사용 
 
 2. 장점
    1. 객체를 만드는데 복잡한 순서가 있다면 빌더 패턴을 통해 순서를 강제 하여 클라이언트 코드에서 쉽게 인스턴스를 만들수 있다.
-   2. 불완적인 객체를 사용하지 못하게 할 수 있다. 
-   3. Director 를 통해 복잡한 객체를 만드는 과정을 어느정도 숨길 수 있다.
-   4. Builder 를 통해서 동일한 프로세서를 거치지만 다른 인스턴스를 만들 수 있다. 
+   2. 객체를 생성하는데 다른 표현 코드를 사용할 수 있다.
+   3. 불완적인 객체를 사용하지 못하게 할 수 있다. 
+   4. Director 를 통해 복잡한 객체를 만드는 과정을 어느정도 숨길 수 있다.
+   5. Builder 를 통해서 동일한 프로세서를 거치지만 다른 인스턴스를 만들 수 있다. 
+   6. 많은 Constructor, 너무 많은 파라미터를 가지는 Constructor 를 없앨 수 있다. 
+   7. 코드 재 사용성을 개선 할 수 있고 SOLD와 DRY 원칙을 준수 할 수 있다. 
 3. 단점 
-   1. Director Builder 를 만들어야 한다. -> 객체 생성을 추가로 해야한다.
-   2. 생성 구조가 복잡해진다. 
+   1. Director Builder 를 만들어야 한다. -> 객체 생성을 추가로 해야한다. -> 생성시간 과 리소스를 많이 먹을 수 있다.
+   2. 생성 구조가 복잡해진다.
+   3. 100개의 DTO, Entity가 있다면 100개의 Concrete Builder 가 있어야 한다. 
+   4. 잘못 구현하면 Feature Envy, God Class 코드 스멜 문제 발생 가능성
+      1. Feature Envy: 한 Class 에 구현된 메서드가 다른 클레스에 구현된 메서드를 더 많이 쓰는것 
+      2. God Class: 너무 많은 타입, 카테고리화 되지 않은 메서드 들이 한 클래스에 존재하는 경우 
+   5. test stub 을 얻을때 copy & Past programing 권장하게 한다. 
+   6. Concurrent implementation with Abstract Factory design pattern with the particularity that it creates different types of objects, not objects of the same family type. This may lead to confusion and the incorrect use of any of the two patterns.
+   
 4. Lombok
    1. @Builder
    2. @SuperBuilder

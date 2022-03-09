@@ -10,14 +10,10 @@ import java.util.List;
  * 장점: 객체를 만드는데 복잡한 순서가 있다면 빌더 패턴을 통해 순서를 강제 하여 클라이언트 코드에서 쉽게 인스턴스를 만들수 있다.
  */
 public class TourWithPlanBuilder {
-    private TourPlan tourPlan;
-    private DetailPlanBuilder detailPlanBuilder;
-    private DetailPlanListBuilder detailPlanListBuilder;
+    private final TourPlan tourPlan;
 
     protected TourWithPlanBuilder() {
         this.tourPlan = new TourPlan();
-        this.detailPlanBuilder = new DetailPlanBuilder().newInstance();
-        this.detailPlanListBuilder = new DetailPlanListBuilder().newInstance();
     }
 
     public static TourWithPlanBuilder newInstance() {
