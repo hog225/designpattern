@@ -51,4 +51,6 @@ Creationl pattern 중 하나, SOLID ?
    1. Director Builder 를 만들어야 한다. -> 객체 생성을 추가로 해야한다.
    2. 생성 구조가 복잡해진다. 
 4. Lombok
+   1. @Builder
+   2. @SuperBuilder
 
