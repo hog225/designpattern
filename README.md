@@ -67,3 +67,15 @@
    1. @Builder
    2. @SuperBuilder
 
+## Prototype 패턴
+![img_3.png](img_3.png)
+- proto - 처음으로 만들어진 
+- 기존 인스턴스를 응용해서 새로운 인스턴스를 만드는 경우, 생성이 오래걸리는 인스턴스를 복사해서 필요한 타입만 변경 
+- 인터페이스의 클론을 쓴다. 
+- Clonable - 마커 인터페이스 패턴 얘가 무슨일을 하는지 간파하기 위한 패턴 나는 클로너블이 가능 하다
+- native method ?? 
+- deep copy
+- 걍 copy 는 shallow copy 이다. shllow copy는 객체를 참조한다. 객체를 참조한다는 말은 기존 객체가 변경되면 카피한 객체도 변경된다는 의미 이다. 
+- deep copy 는 객체를 복사한다. 
+- modelMapper - DTO 만들때 좋을것 같다. 
+
