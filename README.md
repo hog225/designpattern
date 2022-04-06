@@ -1,5 +1,9 @@
 # Design Pattern
-
+- 비슷한 패턴 간의 차이점은 무엇인가 ? 
+- 계속해서 봐야 좋다 !
+- uml 
+  - 실선으로 연결된 부분은 : 구조족으로 연결된
+  - 점선은 : 디펜던시 
 # 생성 패턴
 ## SingleTone
    1. Spring 에서 사용하는 싱글톤
@@ -98,6 +102,7 @@
 ## 브릿지패턴
 ![img_5.png](img_5.png)
 - 추상적인 것과 구체적인 것을 분리하여 연결 
+- 트리 
 - 동작 - 상태 와같이 성격이 상이한것을 분리하고 연결하는것 
 - Abstraction 고차원적인 상위의 로직을 가지고 있음 
   - Redefined Abstraction 상위 로직을 좀 구체적으로 
@@ -105,4 +110,31 @@
 - OCP 
 - 추상적인 코드와 구체적인 코드를 분리할 수 있다. !
 
+# Composite 디자인 패턴 
+![img_7.png](img_7.png)
+- 전체 계층구조와 전체의 부분 계층을 클라이언트 입장에서 동일하게 사용할 수 있는 패턴
+- 아이템 과 가방 예를 들어 아이템의 가격 가방안에 있는 모든 아이템의 가격을 뭔가 동일한 인터페이스로 얻어 오는것
+- 좀 뭔가 flatmap 같은 느낌 
+- 트리구조를 구성 해야 해당 패턴을 사용가능
 
+- UML 설명 
+  - ![img_8.png](img_8.png)
+  - 참조 (https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=kyung778&logNo=60154874584)
+  - Client 와 Component : 연관관계 - client 가 Component를 포함하고 있다. 
+  - Component 와 Composite : 구성관계 - Composite은 Component로 구성되어 있다.
+    - 구성관계 (Composition)- part-of 관계 다이아 쪽이 화살표쪽 으로 구성되어 있다, 다이아 쪽이 화살표 쪽의 라이프 사이클을 통제한다., 자동차 ♦︎--> 엔진, 자동차가 부셔지면 엔진도 부셔진다. 
+    - 집합관계 (Aggregation) - has-a 관계  다이아 쪽이 화살표쪽을 가지고 있다. 다이아 쪽과 화살표쪽의 라이프 사이클 관계 없다., 사람 <>--> 주소, 사람이 없어진다고 주소가 사라지지는 않는다.
+    - 참조 (https://sonsooresoon.tistory.com/entry/Aggregation-%EA%B3%BC-Composition-%EC%9D%98-%EC%B0%A8%EC%9D%B4)
+  - Component 와 Composite, Leaf : 일반화(Generalization) 관계 상속관계 
+
+
+- 장점 
+  - 복잡한 트리구조를 간단하게 쓸 수 있다. 
+  - 클라이언트 코드에서 클레스 구조에 대해 많은 걸 알지 않아도 된다. 
+  - 클라이언트 코드 변경을 최소화 할 수 있다. ocp 확장에는 열려 있고 변경에는 닫혀 있다. 
+- 단점 
+  - 트리구조를 만들어야 하기 때문에 지나치게 일반화를 해야 하는 경우도 생길 수 있다. 
+    - (억지로 맞출려다 보면 런타임에 printPrice 에서 Componet의 Type을 체크해야 할 수 있다. 이럴경우엔 Composite 패턴 사용이 맞는지 생각해 보자 )
+- Override 메서드는 컴파일타임에 이 메서드가 인터페이스의 메서드 인지 확인을 해준다. 
+
+    
