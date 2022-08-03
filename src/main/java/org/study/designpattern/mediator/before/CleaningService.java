@@ -6,7 +6,7 @@ public class CleaningService {
         System.out.println(place + " + 청소중 !!!" );
     }
 
-    public void getTowel(Guest guest, int number) {
-        System.out.println(" give towel to guest " + guest.getName() + " number " + number);
+    public void getTowel(String name, int number) {
+        System.out.println(" give towel to guest " + name + " number " + number);
     }
 }

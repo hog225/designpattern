@@ -6,7 +6,7 @@ import lombok.Data;
 public class Guest {
 
     private String name;
-    private Restaurant restrant = new Restaurant();
+    private Restaurant restaurant = new Restaurant();
     private CleaningService cleaningService = new CleaningService();
 
     public Guest(String name) {
@@ -14,10 +14,10 @@ public class Guest {
     }
 
     public void dinner() {
-        restrant.dinner(this);
+        restaurant.dinner(this);
     }
 
     public void getTowel(int number) {
-        cleaningService.getTowel(this, number);
+        cleaningService.getTowel(this.name, number);
     }
 }

@@ -180,9 +180,37 @@
 4. arrayList 는 컨크리트 애그리게이트
 
 ## mediator pattern (중재자 패턴)
-1. 여러 객체들간의 의사소통 방법으 추상화 시킨 패턴
-2. ![img_16.png](img_16.png)
-3. 중재자 패턴 의 하나의 모양이라고 생각하면 좋다. 
-4. 중재자를 통해 컴포넌트 간의 결합도를 낮춘다. 
-5. 중요한점 !!! concreteCollegue1 이 concreteCollegue2 를 참조하고 있지 않다. 
-6. Mediator, Colleague 는 없어도 되긴 하다. 
+1. 개요
+   1. 여러 객체들간의 의사소통 방법을 추상화 시켜서 그 객체들간의 의존성을 낮추는 방법 
+   2. 컴포넌트들이 거미줄 처럼 의존하고 있는 상황을 해결하기 위한 패턴 이다. 
+   3. 실생활의 예 
+      1. 관리실과 주민 
+      2. 비행기와 관제 탑
+2. UML
+   1. ![img_16.png](img_16.png)
+      1. 모양 보다는 Colleague 가 다른 Colleague 를 참조하지 않는다는 것이 중요
+         1. 실제 구현은 ConcreteMediator 만 사용할 수도 있다.
+         2. Colleague 도 공통의 인터페이스를 구현하는 그림이 아닌 ConcreteColleague 만 써서 구현 할 수 있다. 
+      2. mediator 요청을 받아드리고 처리하는 중재자 
+      
+3. 기존 코드 UML
+   1. ![img_19.png](img_19.png)
+      1. 의존관계가 너무 복잡하다. 
+      2. Guest, Restaurant, CleaningService 는 추이 종속성 관계로 '자신이 직접 사용하지 않는 요소에는 절대로 의존해서는 안된다' 는 소프트웨어 원칙을 위반하게 된다.
+   
+4. 변경 코드 UML
+   1. ![img_20.png](img_20.png)
+      1. FrontDesk - CleaningService, Guest 양방향 관계
+      2. FrontDesk -> Restaurant
+5. 장점
+   1. 컴포넌트 코드를 변경하지 않고 새로운 중재자를 만들어 사용할 수 있다. 
+      1. 그러나 지금 작성된 코드로는 해당 장점을 누릴 수 없다. 새로운 클래스를 생성하게 되면 Colleague 에서 쓰는 메서드가 변경 될 수 있음으로 (인터페이스 권장)
+   2. 각각의 컴포넌트 코드를 보다 간결하게 유지할 수 있다. 
+6. 단점
+   1. 중재자 역할을 하는 클래스의 복잡도와 결합도가 증가한다.
+      1. 테스트가 어려워 지고, 코드 변경이 어려워진다. 
+7. Spring 
+   1. DispatcherServlet - mediator
+      1. DispatcherServlet 의 경우엔 각 컴포넌트들 간의 관계가 단방향이다.  
+      2. DispatcherServlet 에서 각 컴포넌트들을 처리하여 결과 값을 돌려준다. 
+   2. 

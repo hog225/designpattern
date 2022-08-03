@@ -15,7 +15,7 @@ public class FrontDesk implements Mediator {
     private Restaurant restaurant = new Restaurant(this);
 
     public void getTowels(Guest guest, int number) {
-        // 데이터를 넘길때 CleaningService 다른 컬리그를 참조하도록 넘기면 안된다.
+        // 데이터를 넘길때 CleaningService 에서 다른 컬리그를 참조하도록 넘기면 안된다.
         cleaningService.getTowel(guest.getRoomNumber(), number);
     }
 
